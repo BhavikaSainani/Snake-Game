@@ -1,7 +1,7 @@
 # Snake-Game
 🐍 Snake Game – Cross-Platform (C++)
-📖 Overview
 
+📖 Overview
 Snake Game – Cross-Platform is a fun and interactive terminal-based implementation of the classic Snake game, developed as a college project using C++.
 It enhances the traditional gameplay with emoji-based graphics, random obstacles, power fruits, and a pause/resume feature, while remaining lightweight and fully terminal-driven.
 
