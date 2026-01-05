@@ -1,7 +1,6 @@
-# Snake-Game
 🐍 Snake Game – Cross-Platform (C++)
-
 📖 Overview
+
 Snake Game – Cross-Platform is a fun and interactive terminal-based implementation of the classic Snake game, developed as a college project using C++.
 It enhances the traditional gameplay with emoji-based graphics, random obstacles, power fruits, and a pause/resume feature, while remaining lightweight and fully terminal-driven.
 
@@ -92,26 +91,15 @@ Snake length increases difficulty
 Power fruits provide high-risk, high-reward gameplay
 
 🏗️ System Architecture
-
-The game follows a modular and structured design for clarity and maintainability.
-
 🔧 Game Initialization (setup())
 
-Initializes:
+Initializes snake, food, obstacles, and scores
 
-Snake (starting with 3 segments)
-
-Food and power fruits
-
-Obstacles
-
-Score variables
+Starts snake with three body segments
 
 Ensures no overlapping placements
 
 🎹 Input Handling (input())
-
-Handles real-time key input:
 
 Arrow keys → Movement
 
@@ -125,75 +113,45 @@ R → Restart
 
 Snake movement and growth
 
-Collision detection:
+Collision detection
 
-Walls
-
-Obstacles
-
-Snake body
-
-Food consumption handling
-
-Power fruit effects (size doubling + bonus score)
+Food and power fruit handling
 
 🎨 Rendering (draw())
 
-Redraws the grid every frame
+Redraws the game board every frame
 
-Displays:
+Displays snake, food, obstacles, and walls
 
-Walls 🧱
-
-Snake 🟩
-
-Apples 🍎
-
-Power Fruits 🍇
-
-Obstacles 🪨
-
-Shows score, direction, and game status
+Shows score and game status
 
 🍎 Random Placement (placeFood())
 
-Randomly places food and obstacles
+Places food and obstacles randomly
 
-Prevents overlap with snake and obstacles
+Prevents overlap
 
 Triggers power fruits after a few apples
 
 🔌 Terminal Input / Output
 
-Uses termios for non-buffered, real-time input
+Uses termios for non-buffered input
 
-ANSI escape sequences for:
+ANSI escape sequences for screen clearing
 
-Screen clearing
-
-Smooth frame updates
-
-Emoji rendering depends on terminal font support
+Smooth frame rendering
 
 🔁 Game Flow Overview
 
 Initialize game state
 
-Start main loop:
+Process input
 
-Read input
-
-Update logic
-
-Detect collisions
+Update game logic
 
 Render frame
 
-Control speed using timed delays
-
-Pause anytime with P
-
-End game on collision
+Control speed and timing
 
 🛠️ Technical Implementation
 Language
@@ -204,22 +162,22 @@ Data Structures
 
 Snake stored as a vector of coordinate pairs
 
-Obstacles stored dynamically using vectors
+Obstacles stored dynamically
 
 Game Timing
 
-Controlled using usleep(150000) for balanced speed
+Controlled using usleep(150000)
 
 Memory Management
 
-Efficient use of vectors for dynamic resizing
+Efficient vector-based storage
 
 🧪 Installation & Compilation
 Prerequisites
 
 C++ Compiler (g++)
 
-Terminal environment (Linux / macOS recommended)
+Terminal environment
 
 Build
 g++ -o snake_game main.cpp
@@ -235,38 +193,38 @@ Avoid 🪨 and 🧱
 
 Grow your snake
 
-Achieve the highest possible score
+Maximize your score
 
 🧩 Design Patterns & Best Practices
 Design Patterns
 
-Singleton Pattern – Centralized game state
+Singleton Pattern
 
-Strategy Pattern – Dynamic movement handling
+Strategy Pattern
 
 Best Practices
 
-Modular functions (setup, input, logic, draw)
-
-Constants for dimensions and speed
+Modular code structure
 
 Clear separation of logic and rendering
 
-Clean and intuitive game loop
+Efficient memory usage
+
+Intuitive game loop
 
 🚀 Future Enhancements
 
-GUI version using SFML / SDL
+GUI using SFML / SDL
 
 Multiplayer mode
 
-Additional power-ups (speed boost, shield)
+Additional power-ups
 
 Custom grid size and difficulty
 
-Persistent high-score system
+Persistent high scores
 
-Sound effects and background music
+Sound effects
 
 👥 Team Contributors
 
@@ -277,5 +235,3 @@ Sound effects and background music
 👩‍💻 Megha
 
 👩‍💻 Hardi
-
-We worked collaboratively on all aspects of the project, including game logic, UI design, input handling, optimization, and feature development such as the Pause and Power Fruit systems.
