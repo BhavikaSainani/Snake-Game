@@ -198,22 +198,16 @@ void draw() {
     cout << flush;
 }
 
-void input() {
+int defaultInputProvider() {
 #ifdef _WIN32
     if (_kbhit()) {
         int ch = _getch();
+        if (ch == 0 || ch == 224) ch = _getch();
+        return ch;
+    }
 #else
     if (kbhit()) {
         int ch = getch();
-#endif
-
-        if (ch == 'p' || ch == 'P') { paused = !paused; return; }
-        if (ch == 'q' || ch == 'Q') { gameOver = true; return; }
-        if ((ch == 'r' || ch == 'R') && gameOver) { setup(); return; }
-
-#ifdef _WIN32
-        if (ch == 0 || ch == 224) ch = _getch();
-#else
         if (ch == 27 && kbhit()) {
             getch();
             ch = getch();
@@ -222,16 +216,29 @@ void input() {
             if (ch == 'C') ch = 77;
             if (ch == 'D') ch = 75;
         }
+        return ch;
+    }
 #endif
+    return -1;
+}
 
-        if (paused) return;
+int (*inputProvider)() = defaultInputProvider;
 
-        switch (ch) {
-            case 72: if (dirY == 0) { dirX = 0; dirY = -1; currentDir = "↑"; } break;
-            case 80: if (dirY == 0) { dirX = 0; dirY = 1; currentDir = "↓"; } break;
-            case 77: if (dirX == 0) { dirX = 1; dirY = 0; currentDir = "→"; } break;
-            case 75: if (dirX == 0) { dirX = -1; dirY = 0; currentDir = "←"; } break;
-        }
+void input() {
+    int ch = inputProvider();
+    if (ch == -1) return;
+
+    if (ch == 'p' || ch == 'P') { paused = !paused; return; }
+    if (ch == 'q' || ch == 'Q') { gameOver = true; return; }
+    if ((ch == 'r' || ch == 'R') && gameOver) { setup(); return; }
+
+    if (paused) return;
+
+    switch (ch) {
+        case 72: if (dirY == 0) { dirX = 0; dirY = -1; currentDir = "↑"; } break;
+        case 80: if (dirY == 0) { dirX = 0; dirY = 1; currentDir = "↓"; } break;
+        case 77: if (dirX == 0) { dirX = 1; dirY = 0; currentDir = "→"; } break;
+        case 75: if (dirX == 0) { dirX = -1; dirY = 0; currentDir = "←"; } break;
     }
 }
 
